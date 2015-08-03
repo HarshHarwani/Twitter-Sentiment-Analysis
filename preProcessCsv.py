@@ -70,7 +70,7 @@ featureList = list(set(featureList))
 training_set = nltk.classify.util.apply_features(extract_features, tweets)
 NBClassifier = nltk.NaiveBayesClassifier.train(training_set)
 testTweet = 'congrats harsh,you built the sentiment analyzer'
-processedTestTweet = processTweets(testTweet)e
+processedTestTweet = processTweets(testTweet)
 print NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet)))
 #training_set = nltk.classify.util.apply_features(extract_features, tweets)
 # Remove featureList duplicates
