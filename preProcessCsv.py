@@ -3,7 +3,6 @@ import sys
 import re
 from nltk.corpus import stopwords
 import nltk.classify
-from nltk.tokenize import word_tokenize
 
 stop_words = set(stopwords.words("english"))
 def extract_features(tweet):
@@ -67,9 +66,11 @@ finally:
     f.close()
     target.close()
 featureList = list(set(featureList))
+#here we are passing the tweets variable to the extract_features function
 training_set = nltk.classify.util.apply_features(extract_features, tweets)
 NBClassifier = nltk.NaiveBayesClassifier.train(training_set)
-testTweet = 'congrats harsh,you built the sentiment analyzer'
+
+testTweet = 'I do not like this car'
 processedTestTweet = processTweets(testTweet)
 print NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet)))
 #training_set = nltk.classify.util.apply_features(extract_features, tweets)
